@@ -1,0 +1,71 @@
+version: '3'
+services:
+
+    #PHP Service
+    admin_app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: digitalocean.com/php
+        container_name: admin_app
+        restart: unless-stopped
+        tty: true
+        environment:
+            SERVICE_NAME: admin_app
+            SERVICE_TAGS: dev
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
+            - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+        networks:
+            - app-network
+
+    #Nginx Service
+    webserver:
+        image: nginx:alpine
+        container_name: webserver
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "8000:80"
+            - "443:443"
+        volumes:
+            - ./:/var/www
+            - ./nginx/conf.d/:/etc/nginx/conf.d/
+        networks:
+            - app-network
+
+    #REDID Service
+    admin_redis:
+        image: redis:rc-alpine3.13
+        container_name: admin_redis
+        command: redis-server --appendonly yes --requirepass "${REDIS_PASSWORD}"
+        volumes:
+            - ./data/redis:/data
+        ports:
+            - "6379:6379"
+
+    #MySQL Service
+    admin_db:
+        image: mysql
+        container_name: admin_db
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_DATABASE: main_db
+            MYSQL_ROOT_PASSWORD: 123456
+            SERVICE_TAGS: dev
+            SERVICE_NAME: mysql
+        networks:
+            - app-network
+
+#Docker Networks
+networks:
+    app-network:
+        driver: bridge
+#Volumes
+volumes:
+    data:
+        driver: local
