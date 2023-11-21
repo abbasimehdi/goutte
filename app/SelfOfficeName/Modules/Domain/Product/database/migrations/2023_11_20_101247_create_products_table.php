@@ -1,7 +1,7 @@
 <?php
 
-use App\SelfOfficeName\Modules\Domain\Product\src\Models\Schemas\AddProductSchema;
 use Illuminate\Database\Migrations\Migration;
+use Selfofficename\Modules\Domain\Product\Models\Schemas\AddProductSchema;
 
 return new class extends Migration
 {

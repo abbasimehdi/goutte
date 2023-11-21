@@ -2,9 +2,9 @@
 
 namespace Selfofficename\Modules\Domain\Product;
 
-use App\SelfOfficeName\Modules\Domain\Product\src\Models\Schemas\Constants\ProductConstants;
 use Carbon\Laravel\ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Selfofficename\Modules\Domain\Product\Models\Schemas\Constants\ProductConstants;
 
 class ProductServiceProvider extends ServiceProvider
 {

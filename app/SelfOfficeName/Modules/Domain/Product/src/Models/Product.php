@@ -1,6 +1,6 @@
 <?php
 
-namespace App\SelfOfficeName\Modules\Domain\Product\src\Models;
+namespace Selfofficename\Modules\Domain\Product\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

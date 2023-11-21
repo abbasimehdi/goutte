@@ -1,6 +1,6 @@
 <?php
 
-namespace App\SelfOfficeName\Modules\Domain\Product\src\Models\Schemas;
+namespace Selfofficename\Modules\Domain\Product\Models\Schemas;
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
