@@ -2,16 +2,16 @@ version: '3'
 services:
 
     #PHP Service
-    admin_app:
+    app:
         build:
             context: .
             dockerfile: Dockerfile
         image: digitalocean.com/php
-        container_name: admin_app
+        container_name: app
         restart: unless-stopped
         tty: true
         environment:
-            SERVICE_NAME: admin_app
+            SERVICE_NAME: app
             SERVICE_TAGS: dev
         working_dir: /var/www
         volumes:
@@ -27,7 +27,7 @@ services:
         restart: unless-stopped
         tty: true
         ports:
-            - "8000:80"
+            - "80:80"
             - "443:443"
         volumes:
             - ./:/var/www
@@ -36,9 +36,9 @@ services:
             - app-network
 
     #REDID Service
-    admin_redis:
+    redis:
         image: redis:rc-alpine3.13
-        container_name: admin_redis
+        container_name: app_redis
         command: redis-server --appendonly yes --requirepass "${REDIS_PASSWORD}"
         volumes:
             - ./data/redis:/data
@@ -46,9 +46,9 @@ services:
             - "6379:6379"
 
     #MySQL Service
-    admin_db:
+    db:
         image: mysql
-        container_name: admin_db
+        container_name: db
         restart: unless-stopped
         tty: true
         ports:

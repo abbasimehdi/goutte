@@ -172,11 +172,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
+        \Selfofficename\Modules\InfraStructure\Providers\AppServiceProvider::class,
+        \Selfofficename\Modules\InfraStructure\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        \Selfofficename\Modules\InfraStructure\Providers\EventServiceProvider::class,
+        \Selfofficename\Modules\InfraStructure\Providers\RouteServiceProvider::class,
 
     ])->toArray(),
 

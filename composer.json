@@ -25,9 +25,9 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "Selfofficename\\Modules\\Core\\": "app/SelfOfficeName/Modules/Core/src",
-            "Selfofficename\\Modules\\Domain\\Product\\": "app/SelfOfficeName/Modules/Domain/Product/src",
-            "Selfofficename\\Modules\\InfraStructure\\": "app/SelfOfficeName/Modules/infrastructure/src"
+            "Selfofficename\\Modules\\Core\\": "SelfOfficeName/Modules/Core/src",
+            "Selfofficename\\Modules\\Domain\\Product\\": "SelfOfficeName/Modules/Domain/Product/src",
+            "Selfofficename\\Modules\\InfraStructure\\": "SelfOfficeName/Modules/infrastructure/src"
         }
     },
     "autoload-dev": {
