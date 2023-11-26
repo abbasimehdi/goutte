@@ -33,7 +33,7 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/",
-            "Selfofficename\\Modules\\Product\\tests\\": "app/SelfOfficeName/Modules/Domain/Product/tests"
+            "Selfofficename\\Modules\\Product\\tests\\": "SelfOfficeName/Modules/Domain/Product/tests"
         }
     },
     "scripts": {

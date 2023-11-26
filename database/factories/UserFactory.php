@@ -5,12 +5,15 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Selfofficename\Modules\InfraStructure\Models\User;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends Factory<\Selfofficename\Modules\InfraStructure\Models\User>
  */
 class UserFactory extends Factory
 {
+
+    protected $model = User::class;
     protected static ?string $password;
 
     /**

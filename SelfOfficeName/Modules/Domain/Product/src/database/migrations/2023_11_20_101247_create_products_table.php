@@ -1,6 +1,6 @@
 <?php
 
-namespace SelfOfficeName\Modules\Domain\Product\database\migrations;
+namespace Selfofficename\Modules\Domain\Product\database\migrations;
 
 use Illuminate\Database\Migrations\Migration;
 use Selfofficename\Modules\Domain\Product\Models\Schemas\AddProductSchema;
