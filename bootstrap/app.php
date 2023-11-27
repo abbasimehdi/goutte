@@ -41,7 +41,7 @@ $app->singleton(
     \Selfofficename\Modules\InfraStructure\Exceptions\Handler::class
 );
 
-$app->useAppPath(realpath(__DIR__ . '/../SelfOfficeName\Modules\infrastructure\src'));
+$app->useAppPath(realpath(__DIR__ . '/../src/Core'));
 
 /*
 |--------------------------------------------------------------------------

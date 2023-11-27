@@ -11,6 +11,8 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title', 'image'];
+
     /**
      * @return Factory|ProductFactory
      */
