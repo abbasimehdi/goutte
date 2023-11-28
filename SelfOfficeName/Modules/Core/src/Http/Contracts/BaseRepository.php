@@ -2,9 +2,11 @@
 
 namespace Selfofficename\Modules\Core\Http\Contracts;
 
+use http\Env\Request;
 use Illuminate\Http\JsonResponse;
 use Selfofficename\Modules\Core\Http\Resources\BaseListCollection;
 use Selfofficename\Modules\Core\Models\Schemas\Constants\BaseConstants;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 abstract class BaseRepository implements BaseRepositoryInterface
@@ -26,7 +28,11 @@ abstract class BaseRepository implements BaseRepositoryInterface
      */
     public function all(): JsonResponse
     {
-        return response()->json($this->model->all(), ResponseAlias::HTTP_OK);
+        return (new BaseListCollection(
+            collect($this->model->paginate(\request()->query('limit') ?? BaseConstants::LIMIT), ResponseAlias::HTTP_OK)
+        ))
+            ->response()
+            ->setStatusCode(ResponseAlias::HTTP_OK);
     }
 
     /**
@@ -37,7 +43,7 @@ abstract class BaseRepository implements BaseRepositoryInterface
     public function paginate($request, int $limit = BaseConstants::LIMIT): JsonResponse
     {
         return (new BaseListCollection(collect($this->model->orderBy('id', 'desc')
-            ->paginate($request->query('limit') ?? $limit))))
+            ->paginate(\request()->query('limit') ?? $limit))))
             ->response()
             ->setStatusCode(ResponseAlias::HTTP_OK);
     }
@@ -61,7 +67,7 @@ abstract class BaseRepository implements BaseRepositoryInterface
     {
         return (new BaseListCollection(collect($this->model->create($data))))
             ->response()
-            ->setStatusCode(ResponseAlias::HTTP_OK);
+            ->setStatusCode(ResponseAlias::HTTP_CREATED);
     }
 
     /**
@@ -84,7 +90,7 @@ abstract class BaseRepository implements BaseRepositoryInterface
     {
         return (new BaseListCollection(collect($this->model->findOrfail($id)->update($data))))
             ->response()
-            ->setStatusCode(ResponseAlias::HTTP_OK);
+            ->setStatusCode(ResponseAlias::HTTP_ACCEPTED);
     }
 
     /**
