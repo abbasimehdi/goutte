@@ -2,16 +2,16 @@ version: '3'
 services:
 
     #PHP Service
-    admin_app:
+    main_app:
         build:
             context: .
             dockerfile: Dockerfile
         image: digitalocean.com/php
-        container_name: admin_app
+        container_name: main_app
         restart: unless-stopped
         tty: true
         environment:
-            SERVICE_NAME: admin_app
+            SERVICE_NAME: main_app
             SERVICE_TAGS: dev
         working_dir: /var/www
         volumes:
@@ -21,51 +21,34 @@ services:
             - app-network
 
     #Nginx Service
-    webserver:
+    main_webserver:
         image: nginx:alpine
-        container_name: webserver
+        container_name: main_webserver
         restart: unless-stopped
         tty: true
         ports:
-            - "80:80"
-            - "443:443"
+            - "8000:80"
+            - "444:443"
         volumes:
             - ./:/var/www
             - ./nginx/conf.d/:/etc/nginx/conf.d/
         networks:
             - app-network
-
-    #REDID Service
-    redis:
-        image: redis:rc-alpine3.13
-        container_name: app_redis
-        command: redis-server --appendonly yes --requirepass "${REDIS_PASSWORD}"
-        volumes:
-            - ./data/redis:/data
-        ports:
-            - "6379:6379"
-
     #MySQL Service
-    admin_db:
+    main_db:
         image: mysql
-        container_name: admin_db
+        container_name: main_db
         restart: unless-stopped
         tty: true
         ports:
-            - "3306:3306"
+            - "3307:3306"
         environment:
-            MYSQL_DATABASE: admin_db
+            MYSQL_DATABASE: main_db
             MYSQL_ROOT_PASSWORD: 123456
             SERVICE_TAGS: dev
             SERVICE_NAME: mysql
         networks:
             - app-network
-
-    rabbitmq:
-        image: rabbitmq:3.9-management-alpine
-        ports:
-            - "5672:5672"
-            - "15672:15672"
 
 #Docker Networks
 networks:

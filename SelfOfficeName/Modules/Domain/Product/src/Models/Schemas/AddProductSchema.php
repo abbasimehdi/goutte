@@ -13,7 +13,7 @@ class AddProductSchema
     public static function createTable(): void
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('id')->primary();
             $table->string('title');
             $table->string('image');
             $table->unsignedInteger('likes')->default(0);
