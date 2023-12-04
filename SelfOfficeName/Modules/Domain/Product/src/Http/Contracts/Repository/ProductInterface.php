@@ -10,4 +10,6 @@ interface ProductInterface
     public function index(): JsonResponse;
 
     public function store(array $data): JsonResponse;
+
+    public function like(array $data);
 }
