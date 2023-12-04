@@ -3,9 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Selfofficename\Modules\Domain\Product\Http\Controllers\ProductController;
 
-Route::group([],function ($route)  {
-    $route->apiResources([
-        'product' => ProductController::class,
-    ]);
+Route::group(['prefix' => 'product'],function ($route)  {
+    $route->get('', [ProductController::class, 'index']);
+    $route->post('like', [ProductController::class, 'like']);
 });
 
