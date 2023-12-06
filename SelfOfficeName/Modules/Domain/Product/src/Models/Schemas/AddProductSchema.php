@@ -15,7 +15,7 @@ class AddProductSchema
         Schema::create('products', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary();
             $table->string('title');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->unsignedInteger('likes')->default(0);
             $table->timestamps();
         });

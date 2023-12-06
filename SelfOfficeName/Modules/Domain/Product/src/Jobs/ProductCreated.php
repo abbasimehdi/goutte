@@ -31,7 +31,7 @@ class ProductCreated implements ShouldQueue
         Product::query()->create([
            'id'           => $this->data['id'],
            'title'        => $this->data['title'],
-           'image'        => $this->data['image'],
+           'image'        => $this->data['image'] ?? "ul",
            'created_at'   => $this->data['created_at'],
            'updated_at'   => $this->data['updated_at'],
         ]);

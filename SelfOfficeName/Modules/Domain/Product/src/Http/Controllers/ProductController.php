@@ -6,7 +6,6 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Selfofficename\Modules\Domain\Product\Http\Contracts\Repository\ProductInterface;
 use Selfofficename\Modules\InfraStructure\Http\Controllers\Controller;
-
 class ProductController extends Controller
 {
 
