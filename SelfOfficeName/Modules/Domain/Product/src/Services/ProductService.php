@@ -40,7 +40,6 @@ class ProductService implements ProductInterface
 
         return $this->productRepository->create($data);
     }
-
     public function like(array $data)
     {
          ProductLiked::dispatch(
