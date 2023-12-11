@@ -2,16 +2,16 @@ version: '3'
 services:
 
     #PHP Service
-    main_app:
+    goutte_app:
         build:
             context: .
             dockerfile: Dockerfile
         image: digitalocean.com/php
-        container_name: main_app
+        container_name: goutte_app
         restart: unless-stopped
         tty: true
         environment:
-            SERVICE_NAME: main_app
+            SERVICE_NAME: goutte_app
             SERVICE_TAGS: dev
         working_dir: /var/www
         volumes:
@@ -21,29 +21,29 @@ services:
             - app-network
 
     #Nginx Service
-    main_webserver:
+    goutte_webserver:
         image: nginx:alpine
-        container_name: main_webserver
+        container_name: goutte_webserver
         restart: unless-stopped
         tty: true
         ports:
-            - "8000:80"
-            - "444:443"
+            - "8001:80"
+            - "445:443"
         volumes:
             - ./:/var/www
             - ./nginx/conf.d/:/etc/nginx/conf.d/
         networks:
             - app-network
     #MySQL Service
-    main_db:
+    goutte_db:
         image: mysql
-        container_name: main_db
+        container_name: goutte_db
         restart: unless-stopped
         tty: true
         ports:
-            - "3307:3306"
+            - "3308:3306"
         environment:
-            MYSQL_DATABASE: main_db
+            MYSQL_DATABASE: goutte_db
             MYSQL_ROOT_PASSWORD: 123456
             SERVICE_TAGS: dev
             SERVICE_NAME: mysql
