@@ -14,6 +14,10 @@ class ProductServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        /*
+         * Package Service Providers...
+         */
+        Weidner\Goutte\GoutteServiceProvider::class; // [1] This will register the Package in the laravel echo system
         $this->routeRegister();
         $this->loadMigrationsFrom(__DIR__.ProductConstants::MIGRATION_ROUTE);
     }

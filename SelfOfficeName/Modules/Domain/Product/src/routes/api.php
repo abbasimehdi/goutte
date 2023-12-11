@@ -5,6 +5,5 @@ use Selfofficename\Modules\Domain\Product\Http\Controllers\ProductController;
 
 Route::group(['prefix' => 'product'],function ($route)  {
     $route->get('', [ProductController::class, 'index']);
-    $route->post('like', [ProductController::class, 'like']);
 });
 

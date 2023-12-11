@@ -20,17 +20,8 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): \Illuminate\Http\JsonResponse
+    public function index(): JsonResponse
     {
         return $this->productRepositoryInterface->index();
-    }
-
-    /**
-     * @param Request $request
-     * @return \Illuminate\Foundation\Bus\PendingDispatch
-     */
-    public function like(Request $request)
-    {
-        return $this->productRepositoryInterface->like($request->post());
     }
 }
