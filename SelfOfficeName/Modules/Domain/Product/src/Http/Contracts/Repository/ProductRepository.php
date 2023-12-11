@@ -9,6 +9,10 @@ use Goutte;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
+/*
+ * @TODO
+ * Create by Builder pattern
+ */
 class ProductRepository extends BaseRepository
 {
     public function model(): mixed
